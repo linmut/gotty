@@ -36,12 +36,12 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="develpoment-env-config" value="2" />
-          <entry key="go" value="35" />
+          <entry key="go" value="45" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Go" value="35" />
+          <entry key="Go" value="45" />
           <entry key="PLAIN_TEXT" value="2" />
         </counts>
       </usages-collector>
@@ -52,7 +52,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="447">
+            <state relative-caret-position="-32">
               <caret line="89" column="30" selection-start-line="89" selection-start-column="27" selection-end-line="89" selection-end-column="30" />
               <folding>
                 <element signature="e#14#276#0" expanded="true" />
@@ -73,8 +73,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server/handlers.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="512">
-              <caret line="165" column="17" selection-start-line="165" selection-start-column="14" selection-end-line="165" selection-end-column="17" />
+            <state relative-caret-position="590">
+              <caret line="90" column="26" selection-start-line="90" selection-start-column="26" selection-end-line="90" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -82,8 +82,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/webtty/webtty.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="152">
-              <caret line="8" column="8" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
+            <state relative-caret-position="455">
+              <caret line="174" column="54" selection-start-line="174" selection-start-column="54" selection-end-line="174" selection-end-column="54" />
+              <folding>
+                <element signature="e#16#107#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -184,24 +187,6 @@
             <path>
               <item name="gotty" type="b2602c69:ProjectViewProjectNode" />
               <item name="gotty" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="gotty" type="b2602c69:ProjectViewProjectNode" />
-              <item name="gotty" type="462c0819:PsiDirectoryNode" />
-              <item name="backend" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="gotty" type="b2602c69:ProjectViewProjectNode" />
-              <item name="gotty" type="462c0819:PsiDirectoryNode" />
-              <item name="backend" type="462c0819:PsiDirectoryNode" />
-              <item name="localcommand" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="gotty" type="b2602c69:ProjectViewProjectNode" />
-              <item name="gotty" type="462c0819:PsiDirectoryNode" />
-              <item name="backend" type="462c0819:PsiDirectoryNode" />
-              <item name="localcommand" type="462c0819:PsiDirectoryNode" />
-              <item name="factory.go" type="e9541c9c:GoTreeStructureProvider$GoFileNode" />
             </path>
             <path>
               <item name="gotty" type="b2602c69:ProjectViewProjectNode" />
@@ -360,16 +345,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="447">
-          <caret line="89" column="30" selection-start-line="89" selection-start-column="27" selection-end-line="89" selection-end-column="30" />
-          <folding>
-            <element signature="e#14#276#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server/server.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="477">
@@ -377,17 +352,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/main.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-32">
+          <caret line="89" column="30" selection-start-line="89" selection-start-column="27" selection-end-line="89" selection-end-column="30" />
+          <folding>
+            <element signature="e#14#276#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/server/handlers.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="512">
-          <caret line="165" column="17" selection-start-line="165" selection-start-column="14" selection-end-line="165" selection-end-column="17" />
+        <state relative-caret-position="590">
+          <caret line="90" column="26" selection-start-line="90" selection-start-column="26" selection-end-line="90" selection-end-column="26" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/webtty/webtty.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="8" column="8" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
+        <state relative-caret-position="455">
+          <caret line="174" column="54" selection-start-line="174" selection-start-column="54" selection-end-line="174" selection-end-column="54" />
+          <folding>
+            <element signature="e#16#107#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

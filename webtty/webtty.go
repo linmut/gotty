@@ -4,11 +4,10 @@ import (
 	"context"
 	"encoding/base64"
 	"encoding/json"
+	"github.com/pkg/errors"
 	//"golang.org/x/tools/go/ssa/interp/testdata/src/fmt"
 	"sync"
 	"fmt"
-
-	"github.com/pkg/errors"
 )
 
 // WebTTY bridges a PTY slave and its PTY master.
@@ -136,7 +135,7 @@ func (wt *WebTTY) sendInitializeMessage() error {
 }
 
 func (wt *WebTTY) handleSlaveReadEvent(data []byte) error {
-	fmt.Printf("### handleSlaveReadEvent data=%s\n", string(data))
+	//fmt.Printf("### handleSlaveReadEvent data=%s\n", string(data))
 	safeMessage := base64.StdEncoding.EncodeToString(data)
 	err := wt.masterWrite(append([]byte{Output}, []byte(safeMessage)...))
 	if err != nil {
@@ -159,7 +158,7 @@ func (wt *WebTTY) masterWrite(data []byte) error {
 }
 
 func (wt *WebTTY) handleMasterReadEvent(data []byte) error {
-	fmt.Printf("=== handleMasterReadEvent data=%s\n", string(data))
+	//fmt.Printf("=== handleMasterReadEvent data=%s\n", string(data))
 	if len(data) == 0 {
 		return errors.New("unexpected zero length read from master")
 	}
@@ -173,7 +172,7 @@ func (wt *WebTTY) handleMasterReadEvent(data []byte) error {
 		if len(data) <= 1 {
 			return nil
 		}
-
+		fmt.Printf("=== handleMasterReadEvent [Input] data=%s\n", string(data[1:]))
 		_, err := wt.slave.Write(data[1:])
 		if err != nil {
 			return errors.Wrapf(err, "failed to write received data to slave")
