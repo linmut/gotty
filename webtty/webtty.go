@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/base64"
 	"encoding/json"
+	"golang.org/x/tools/go/ssa/interp/testdata/src/fmt"
 	"sync"
 
 	"github.com/pkg/errors"
@@ -134,6 +135,7 @@ func (wt *WebTTY) sendInitializeMessage() error {
 }
 
 func (wt *WebTTY) handleSlaveReadEvent(data []byte) error {
+	fmt.Printf("### handleSlaveReadEvent data=%s\n", string(data))
 	safeMessage := base64.StdEncoding.EncodeToString(data)
 	err := wt.masterWrite(append([]byte{Output}, []byte(safeMessage)...))
 	if err != nil {
@@ -156,6 +158,7 @@ func (wt *WebTTY) masterWrite(data []byte) error {
 }
 
 func (wt *WebTTY) handleMasterReadEvent(data []byte) error {
+	fmt.Printf("=== handleMasterReadEvent data=%s\n", string(data))
 	if len(data) == 0 {
 		return errors.New("unexpected zero length read from master")
 	}

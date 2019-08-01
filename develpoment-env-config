@@ -31,7 +31,9 @@ git clone https://github.com/linmut/gotty.git
 go get github.com/jteeuwen/go-bindata/...
 go get github.com/tools/godep
 
+git pull origin master
 make
+./gotty -w bash
 
 git config --local user.email "875574162@qq.com"
 git config --local user.name "linmut"
