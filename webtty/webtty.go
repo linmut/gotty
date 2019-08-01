@@ -4,8 +4,9 @@ import (
 	"context"
 	"encoding/base64"
 	"encoding/json"
-	"golang.org/x/tools/go/ssa/interp/testdata/src/fmt"
+	//"golang.org/x/tools/go/ssa/interp/testdata/src/fmt"
 	"sync"
+	"fmt"
 
 	"github.com/pkg/errors"
 )
