@@ -179,6 +179,7 @@ func (wt *WebTTY) handleMasterReadEvent(data []byte) error {
 		}
 
 	case Ping:
+		fmt.Printf("@@@ handleMasterReadEvent [Ping] data=%s\n", string([]byte{Pong}))
 		err := wt.masterWrite([]byte{Pong})
 		if err != nil {
 			return errors.Wrapf(err, "failed to return Pong message to master")
