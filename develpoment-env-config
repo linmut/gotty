@@ -1,0 +1,40 @@
+1、mac设置
+mkdir -p /Users/mulin/gotty/src/github.com/linmut
+mkdir -p /Users/mulin/gotty/bin
+mkdir -p /Users/mulin/gotty/pkg
+
+export GOPATH=/Users/mulin/gotty/
+export GO111MODULE=off
+
+cd /Users/mulin/gotty/src/github.com/linmut
+git clone https://github.com/linmut/gotty.git
+
+----
+git status
+git add --all
+git commit -m "x"
+git push origin master
+
+
+2、[ccs_香港出口][其他]
+
+mkdir -p /data/home/mulin/gotty/src/github.com/linmut
+mkdir -p /data/home/mulin/gotty/bin
+mkdir -p /data/home/mulin/gotty/pkg
+
+export GOPATH=/data/home/mulin/gotty/
+export GO111MODULE=off
+
+cd /data/home/mulin/gotty/src/github.com/linmut
+git clone https://github.com/linmut/gotty.git
+
+go get github.com/jteeuwen/go-bindata/...
+go get github.com/tools/godep
+
+make
+
+git config --local user.email "875574162@qq.com"
+git config --local user.name "linmut"
+git status
+git add --all
+git commit -m "x"
