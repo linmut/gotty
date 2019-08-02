@@ -152,7 +152,6 @@ func (wt *WebTTY) masterWrite(data []byte, remoteAddr string) error {
 		output, _ := base64.StdEncoding.DecodeString(string(data[1:]))
 		quote := make([]byte, 0)
 		quote = strconv.AppendQuote(quote, string(output))
-		fmt.Printf("AAA [%s] 输出到websocket masterWrite: length=%d, data=%v, char=%c\n", remoteAddr, len(data[1:]), output, output)
 		fmt.Printf("aaa [%s] 输出到websocket masterWrite: quote=%s\n", remoteAddr, quote)
 	}
 	wt.writeMutex.Lock()
@@ -181,7 +180,7 @@ func (wt *WebTTY) handleMasterReadEvent(data []byte, remoteAddr string) error {
 		if len(data) <= 1 {
 			return nil
 		}
-		fmt.Printf("bbb [%s] [Input] handleMasterReadEvent data=%s\n", remoteAddr, string(data[1:]))
+		//fmt.Printf("bbb [%s] [Input] handleMasterReadEvent data=%s\n", remoteAddr, string(data[1:]))
 		_, err := wt.slave.Write(data[1:])
 		if err != nil {
 			return errors.Wrapf(err, "failed to write received data to slave")

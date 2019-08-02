@@ -37,12 +37,12 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="develpoment-env-config" value="2" />
-          <entry key="go" value="279" />
+          <entry key="go" value="280" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Go" value="279" />
+          <entry key="Go" value="280" />
           <entry key="PLAIN_TEXT" value="2" />
         </counts>
       </usages-collector>
@@ -83,8 +83,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/webtty/webtty.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="495">
-              <caret line="157" column="24" lean-forward="true" selection-start-line="157" selection-start-column="24" selection-end-line="157" selection-end-column="24" />
+            <state relative-caret-position="312">
+              <caret line="183" column="42" lean-forward="true" selection-start-line="183" selection-start-column="42" selection-end-line="183" selection-end-column="42" />
               <folding>
                 <element signature="e#16#107#0" expanded="true" />
               </folding>
@@ -483,8 +483,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/webtty/webtty.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="157" column="24" lean-forward="true" selection-start-line="157" selection-start-column="24" selection-end-line="157" selection-end-column="24" />
+        <state relative-caret-position="312">
+          <caret line="183" column="42" lean-forward="true" selection-start-line="183" selection-start-column="42" selection-end-line="183" selection-end-column="42" />
           <folding>
             <element signature="e#16#107#0" expanded="true" />
           </folding>
