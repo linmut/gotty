@@ -148,7 +148,7 @@ func (wt *WebTTY) handleSlaveReadEvent(data []byte, remoteAddr string) error {
 func (wt *WebTTY) masterWrite(data []byte, remoteAddr string) error {
 	if data[0] == Output{
 		output, _ := base64.StdEncoding.DecodeString(string(data[1:]))
-		fmt.Printf("AAA [%s] 输出到websocket masterWrite data=%s\n", remoteAddr, string(output))
+		fmt.Printf("AAA [%s] 输出到websocket masterWrite data=%v\n", remoteAddr, string(output))
 	}
 	wt.writeMutex.Lock()
 	defer wt.writeMutex.Unlock()
