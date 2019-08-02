@@ -37,12 +37,12 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="develpoment-env-config" value="2" />
-          <entry key="go" value="215" />
+          <entry key="go" value="235" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Go" value="215" />
+          <entry key="Go" value="235" />
           <entry key="PLAIN_TEXT" value="2" />
         </counts>
       </usages-collector>
@@ -84,7 +84,7 @@
         <entry file="file://$PROJECT_DIR$/webtty/webtty.go">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="400">
-              <caret line="150" column="102" selection-start-line="150" selection-start-column="102" selection-end-line="150" selection-end-column="102" />
+              <caret line="150" column="136" selection-start-line="150" selection-start-column="136" selection-end-line="150" selection-end-column="136" />
               <folding>
                 <element signature="e#16#107#0" expanded="true" />
               </folding>
@@ -462,7 +462,7 @@
     <entry file="file://$PROJECT_DIR$/webtty/webtty.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="400">
-          <caret line="150" column="102" selection-start-line="150" selection-start-column="102" selection-end-line="150" selection-end-column="102" />
+          <caret line="150" column="136" selection-start-line="150" selection-start-column="136" selection-end-line="150" selection-end-column="136" />
           <folding>
             <element signature="e#16#107#0" expanded="true" />
           </folding>
