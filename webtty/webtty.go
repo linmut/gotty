@@ -59,7 +59,7 @@ func New(masterConn Master, slave Slave, options ...Option) (*WebTTY, error) {
 // after the context is canceled. Closing them is caller's
 // responsibility.
 // If the connection to one end gets closed, returns ErrSlaveClosed or ErrMasterClosed.
-func (wt *WebTTY) Run(ctx context.Context) error {
+func (wt *WebTTY) Run(ctx context.Context, remoteAddr string) error {
 	err := wt.sendInitializeMessage()
 	if err != nil {
 		return errors.Wrapf(err, "failed to send initializing message")
@@ -76,7 +76,7 @@ func (wt *WebTTY) Run(ctx context.Context) error {
 					return ErrSlaveClosed
 				}
 
-				err = wt.handleSlaveReadEvent(buffer[:n])
+				err = wt.handleSlaveReadEvent(buffer[:n], remoteAddr)
 				if err != nil {
 					return err
 				}
@@ -93,7 +93,7 @@ func (wt *WebTTY) Run(ctx context.Context) error {
 					return ErrMasterClosed
 				}
 
-				err = wt.handleMasterReadEvent(buffer[:n])
+				err = wt.handleMasterReadEvent(buffer[:n], remoteAddr)
 				if err != nil {
 					return err
 				}
@@ -134,8 +134,8 @@ func (wt *WebTTY) sendInitializeMessage() error {
 	return nil
 }
 
-func (wt *WebTTY) handleSlaveReadEvent(data []byte) error {
-	fmt.Printf("### handleSlaveReadEvent data=%s\n", string(data))
+func (wt *WebTTY) handleSlaveReadEvent(data []byte, remoteAddr string) error {
+	fmt.Printf("AAA [%s] handleSlaveReadEvent data=%s\n", remoteAddr, string(data))
 	safeMessage := base64.StdEncoding.EncodeToString(data)
 	err := wt.masterWrite(append([]byte{Output}, []byte(safeMessage)...))
 	if err != nil {
@@ -146,7 +146,7 @@ func (wt *WebTTY) handleSlaveReadEvent(data []byte) error {
 }
 
 func (wt *WebTTY) masterWrite(data []byte) error {
-	fmt.Printf("=== 输出到websocket masterWrite data=%s\n", string(data))
+	//fmt.Printf("=== 输出到websocket masterWrite data=%s\n", string(data))
 	wt.writeMutex.Lock()
 	defer wt.writeMutex.Unlock()
 
@@ -158,8 +158,8 @@ func (wt *WebTTY) masterWrite(data []byte) error {
 	return nil
 }
 
-func (wt *WebTTY) handleMasterReadEvent(data []byte) error {
-	fmt.Printf("=== handleMasterReadEvent data=%s\n", string(data))
+func (wt *WebTTY) handleMasterReadEvent(data []byte, remoteAddr string) error {
+	fmt.Printf("BBB [%s] handleMasterReadEvent data=%s\n", remoteAddr, string(data))
 	if len(data) == 0 {
 		return errors.New("unexpected zero length read from master")
 	}
@@ -173,14 +173,14 @@ func (wt *WebTTY) handleMasterReadEvent(data []byte) error {
 		if len(data) <= 1 {
 			return nil
 		}
-		fmt.Printf("=== handleMasterReadEvent [Input] data=%s\n", string(data[1:]))
+		fmt.Printf("bbb [%s] [Input] handleMasterReadEvent data=%s\n", remoteAddr, string(data[1:]))
 		_, err := wt.slave.Write(data[1:])
 		if err != nil {
 			return errors.Wrapf(err, "failed to write received data to slave")
 		}
 
 	case Ping:
-		fmt.Printf("@@@ handleMasterReadEvent [Ping] data=%s\n", string([]byte{Pong}))
+		fmt.Printf("bbb [%s] [Ping] handleMasterReadEvent [Ping] data=%s\n", remoteAddr, string([]byte{Pong}))
 		err := wt.masterWrite([]byte{Pong})
 		if err != nil {
 			return errors.Wrapf(err, "failed to return Pong message to master")
