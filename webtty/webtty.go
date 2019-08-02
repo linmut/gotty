@@ -60,7 +60,7 @@ func New(masterConn Master, slave Slave, options ...Option) (*WebTTY, error) {
 // responsibility.
 // If the connection to one end gets closed, returns ErrSlaveClosed or ErrMasterClosed.
 func (wt *WebTTY) Run(ctx context.Context, remoteAddr string) error {
-	err := wt.sendInitializeMessage()
+	err := wt.sendInitializeMessage(remoteAddr)
 	if err != nil {
 		return errors.Wrapf(err, "failed to send initializing message")
 	}
@@ -110,22 +110,22 @@ func (wt *WebTTY) Run(ctx context.Context, remoteAddr string) error {
 	return err
 }
 
-func (wt *WebTTY) sendInitializeMessage() error {
-	err := wt.masterWrite(append([]byte{SetWindowTitle}, wt.windowTitle...))
+func (wt *WebTTY) sendInitializeMessage(remoteAddr string) error {
+	err := wt.masterWrite(append([]byte{SetWindowTitle}, wt.windowTitle...), remoteAddr)
 	if err != nil {
 		return errors.Wrapf(err, "failed to send window title")
 	}
 
 	if wt.reconnect > 0 {
 		reconnect, _ := json.Marshal(wt.reconnect)
-		err := wt.masterWrite(append([]byte{SetReconnect}, reconnect...))
+		err := wt.masterWrite(append([]byte{SetReconnect}, reconnect...), remoteAddr)
 		if err != nil {
 			return errors.Wrapf(err, "failed to set reconnect")
 		}
 	}
 
 	if wt.masterPrefs != nil {
-		err := wt.masterWrite(append([]byte{SetPreferences}, wt.masterPrefs...))
+		err := wt.masterWrite(append([]byte{SetPreferences}, wt.masterPrefs...), remoteAddr)
 		if err != nil {
 			return errors.Wrapf(err, "failed to set preferences")
 		}
@@ -146,7 +146,9 @@ func (wt *WebTTY) handleSlaveReadEvent(data []byte, remoteAddr string) error {
 }
 
 func (wt *WebTTY) masterWrite(data []byte, remoteAddr string) error {
-	fmt.Printf("AAA [%s] 输出到websocket masterWrite data=%s\n", string(data[1:]))
+	if data[0] == Output{
+		fmt.Printf("AAA [%s] 输出到websocket masterWrite data=%s\n", string(data[1:]))
+	}
 	wt.writeMutex.Lock()
 	defer wt.writeMutex.Unlock()
 
