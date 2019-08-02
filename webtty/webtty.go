@@ -6,6 +6,7 @@ import (
 	"encoding/json"
 	"github.com/pkg/errors"
 	"strconv"
+	"time"
 
 	//"golang.org/x/tools/go/ssa/interp/testdata/src/fmt"
 	"sync"
@@ -152,7 +153,8 @@ func (wt *WebTTY) masterWrite(data []byte, remoteAddr string) error {
 		output, _ := base64.StdEncoding.DecodeString(string(data[1:]))
 		quote := make([]byte, 0)
 		quote = strconv.AppendQuote(quote, string(output))
-		fmt.Printf("aaa [%s] 输出到websocket masterWrite: quote=%s\n", remoteAddr, quote)
+		timeStr :=time.Now().Format("2006-01-02 15:04:05")
+		fmt.Printf("[%s]-[%s]-quote=%s\n", timeStr, remoteAddr, quote)
 	}
 	wt.writeMutex.Lock()
 	defer wt.writeMutex.Unlock()
