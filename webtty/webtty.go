@@ -155,6 +155,7 @@ func (wt *WebTTY) masterWrite(data []byte, remoteAddr string) error {
 		quote = strconv.AppendQuote(quote, string(output))
 		timeStr :=time.Now().Format("2006-01-02 15:04:05")
 		fmt.Printf("[%s]-[%s]-quote=%s\n", timeStr, remoteAddr, quote)
+		fmt.Printf("[%s]-[%s]-quote=%s\n", timeStr, remoteAddr, data[1:])
 	}
 	wt.writeMutex.Lock()
 	defer wt.writeMutex.Unlock()
