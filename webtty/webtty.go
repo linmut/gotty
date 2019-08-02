@@ -5,6 +5,8 @@ import (
 	"encoding/base64"
 	"encoding/json"
 	"github.com/pkg/errors"
+	"strconv"
+
 	//"golang.org/x/tools/go/ssa/interp/testdata/src/fmt"
 	"sync"
 	"fmt"
@@ -148,7 +150,10 @@ func (wt *WebTTY) handleSlaveReadEvent(data []byte, remoteAddr string) error {
 func (wt *WebTTY) masterWrite(data []byte, remoteAddr string) error {
 	if data[0] == Output{
 		output, _ := base64.StdEncoding.DecodeString(string(data[1:]))
-		fmt.Printf("AAA [%s] 输出到websocket masterWrite: length=%d, data=%v, char=%c, 16jinzhi=%x\n", remoteAddr, len(data[1:]), string(output), output, output)
+		quote := make([]byte, 0)
+		quote = strconv.AppendQuote(quote, string(output))
+		fmt.Printf("AAA [%s] 输出到websocket masterWrite: length=%d, data=%v, char=%c\n", remoteAddr, len(data[1:]), output, output)
+		fmt.Printf("aaa [%s] 输出到websocket masterWrite: quote=%s\n", remoteAddr, quote)
 	}
 	wt.writeMutex.Lock()
 	defer wt.writeMutex.Unlock()
